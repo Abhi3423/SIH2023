@@ -78,7 +78,7 @@ const Landing = () => {
                     <div className="flex gap-2 w-72 items-start">
                         <img src={settings} alt="settings"></img>
                         <div className="flex flex-col gap-2 w-60 text-left">
-                            <span className="font-bold text-lg">HELP - 01</span>
+                            <span className="font-bold text-lg">HELP - 02</span>
                             <span >Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim</span>
                         </div>
                     </div>
@@ -87,7 +87,7 @@ const Landing = () => {
                     <div className="flex gap-2 w-72 items-start">
                         <img src={settings} alt="settings"></img>
                         <div className="flex flex-col gap-2 w-60 text-left">
-                            <span className="font-bold text-lg">HELP - 01</span>
+                            <span className="font-bold text-lg">HELP - 03</span>
                             <span >Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim</span>
                         </div>
                     </div>
@@ -96,7 +96,7 @@ const Landing = () => {
                     <div className="flex gap-2 w-72 items-start">
                         <img src={settings} alt="settings"></img>
                         <div className="flex flex-col gap-2 w-60 text-left">
-                            <span className="font-bold text-lg">HELP - 01</span>
+                            <span className="font-bold text-lg">HELP - 04</span>
                             <span >Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim</span>
                         </div>
                     </div>
@@ -104,7 +104,7 @@ const Landing = () => {
                     <div className="flex gap-2 w-72 items-start">
                         <img src={settings} alt="settings"></img>
                         <div className="flex flex-col gap-2 w-60 text-left">
-                            <span className="font-bold text-lg">HELP - 01</span>
+                            <span className="font-bold text-lg">HELP - 05</span>
                             <span >Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim</span>
                         </div>
                     </div>
