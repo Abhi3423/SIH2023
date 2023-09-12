@@ -1,0 +1,7 @@
+.download:hover svg path {
+    stroke: #FFFFFF;
+}
+
+.documentation:hover svg path {
+    fill: #FFFFFF;
+}
