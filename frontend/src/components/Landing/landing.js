@@ -4,9 +4,14 @@ import map from "../../assets/map.svg"
 import Frame from "../../assets/Frame.svg"
 import settings from "../../assets/settings.svg"
 import './landing.css';
+import technologies from "../../assets/technologies.svg"
+import { useState } from "react";
 
 
 const Landing = () => {
+
+    const [active, setactive] = useState('')
+
     return (
         <div className="flex flex-col gap-12">
             <Navbar />
@@ -118,7 +123,7 @@ const Landing = () => {
                 <h2 className="font-light">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor </h2>
                 <h3 className="font-light">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do </h3>
                 <div className="py-16">
-
+                    <img className="px-20" src={technologies} alt=""></img>
                 </div>
             </div>
         </div>
