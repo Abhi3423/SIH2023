@@ -6,13 +6,16 @@ from wtforms.validators import InputRequired
 from flask_wtf import FlaskForm
 from wtforms import FileField, SubmitField
 from sklearn.preprocessing import StandardScaler
-from flask import Flask, jsonify, render_template, redirect
+from flask import Flask, jsonify, render_template, redirect, request
 from werkzeug.utils import secure_filename
+from flask_cors import CORS
 
 app = Flask(__name__)
 app.config['SECRET_KEY'] = 'Predictions'
 app.config['UPLOAD_FOLDER'] = 'static/files'
 root1=r'static\files'
+cors = CORS(app, resources={r"/home": {"origins": "http://localhost:3000"},
+                            r"/Predicted": {"origins": "http://localhost:3000"}})
 
 model = load(open('model_rf.sav', 'rb'))
 selected_features = [
@@ -102,16 +105,18 @@ class UploadFileForm(FlaskForm):
     file = FileField("File", validators=[InputRequired()])
     submit = SubmitField("Upload File")
 
-@app.route('/home', methods=['GET',"POST"])
+@app.route('/home', methods=["POST"])
 def home():
-    form = UploadFileForm()
-    if form.validate_on_submit():
-        global file1
-        file = form.file.data # First grab the file
-        file.save(os.path.join(os.path.abspath(os.path.dirname(__file__)),app.config['UPLOAD_FOLDER'],secure_filename(file.filename)))
-        file1 = file.filename
-        return redirect('/Predicted')
-    return render_template('index.html', form=form)
+    if request.method == 'POST':
+      file = request.files.get('file') 
+      # form = UploadFileForm()
+      if file:
+          global file1
+          # file = form.file.data # First grab the file
+          file.save(os.path.join(app.config['UPLOAD_FOLDER'], secure_filename(file.filename)))
+          file1 = file.filename
+    return redirect('/Predicted')
+    # return render_template('index.html', form=form)
 
 @app.route('/Predicted')
 def Predicted_Page():
