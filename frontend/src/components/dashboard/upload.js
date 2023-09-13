@@ -32,7 +32,7 @@ const Upload = () => {
             })
             .then(function (response) {
                 console.log(response); // Assuming the API returns data
-                window.sessionStorage.setItem('network_data', JSON.stringify(response.data));
+                window.sessionStorage.setItem('network_data', JSON.stringify(response.data.predictions));
                 setTimeout(() => {
                     navigate('/dashboard');
                 }, 1000);

@@ -135,12 +135,30 @@ def Predicted_Page():
     print(Predict)
     print(Predict.shape)
     print(np.unique(Predict, return_counts=True))
-    return jsonify({'Source IPs': source_ip.tolist(), 
+    data = [{'Source IPs': source_ip.tolist(), 
                     'Destination IPs': destination_ip.tolist(), 
                     'Protocols': protocol.tolist(), 
                     'Ports': port.tolist(), 
                     'Timestamps': timestamp.tolist(),
-                    'Predictions': Predict.tolist()})
+                    'Predictions': Predict.tolist()}]
+    
+    # Convert to the desired format
+    formatted_data = {"predictions": []}
+
+    for i in range(len(data[0]['Source IPs'])):
+        prediction = {
+            "destination_ip": data[0]['Destination IPs'][i],
+            "sourceip": data[0]['Source IPs'][i],
+            "protocol": data[0]['Protocols'][i],
+            "port": data[0]['Ports'][i],
+            "timestamps": data[0]['Timestamps'][i],
+            "predicted value": data[0]['Predictions'][i]
+        }
+        formatted_data["predictions"].append(prediction)
+
+    # Print the formatted data
+    print(formatted_data)
+    return jsonify(formatted_data)
 
 
 @app.route('/ddos=<string:features>')
