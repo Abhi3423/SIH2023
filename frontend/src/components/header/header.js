@@ -1,30 +1,42 @@
 import download from "../../assets/download.svg"
 import logo from "../../assets/logo.svg"
+import { useNavigate } from "react-router-dom";
+import { GoogleLogin, googleLogout } from '@react-oauth/google';
+import jwt_decode from 'jwt-decode';
+import { getCookies, getCookie, setCookie, deleteCookie } from 'cookies-next';
 
 const Navbar = () => {
+    const navigate = useNavigate()
+    console.log(getCookie('token'))
+
+
+    const logOut = () => {
+        googleLogout();
+        navigate('/')
+        deleteCookie('token')
+        window.location.reload()
+    };
+
+
     return (
         <div className="w-[100%] sticky h-18 py-4 px-8 bg-gradient-to-r from-[#101908] via-transparent to-[#262626] justify-between flex text-white border-b-[0.3px] border-[#c6c6c6]">
-            <img className="w-40" src={logo} alt=""></img>
+            <img onClick={() => navigate('/')} className="cursor-pointer w-40" src={logo} alt=""></img>
             <div className="flex gap-8 justify-between items-center text-white text-lg">
-                <button className="transition-colors duration-300 hover:text-[#9747FF]">Login/Signup</button>
-                <button className="transition-colors duration-300 relative group flex gap-2 items-center hover:text-[#299C00]">
-                    Download
-                    <svg
-                        xmlns="http://www.w3.org/2000/svg"
-                        width="22"
-                        height="20"
-                        viewBox="0 0 22 32"
-                        className="stroke-current group-hover:stroke-current"
-                    >
-                        <path
-                            d="M1.54541 29.7279H20M10.7727 2.0461V23.5764M10.7727 23.5764L18.4621 15.887M10.7727 23.5764L3.08329 15.887"
-                            strokeWidth="3.07576"
-                            strokeLinecap="round"
-                            strokeLinejoin="round"
+                {
+                    getCookie('token') === undefined ?
+                        <GoogleLogin
+                            onSuccess={credentialResponse => {
+                                console.log(jwt_decode(credentialResponse.credential).sub)
+                                setCookie('token', jwt_decode(credentialResponse.credential).sub)
+                                navigate('/record')
+                            }}
+                            onError={() => {
+                                console.log('Login Failed');
+                            }}
                         />
-                    </svg>
-                </button>
-
+                        :
+                        <div onClick={() => { logOut() }} className="cursor-pointer bg-white px-4 py-1 rounded-md text-black hover:bg-black hover:text-white">Logout</div>
+                }
 
             </div>
         </div>
