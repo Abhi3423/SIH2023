@@ -32,7 +32,22 @@ const Upload = () => {
             })
             .then(function (response) {
                 console.log(response); // Assuming the API returns data
-                window.sessionStorage.setItem('network_data', JSON.stringify(response.data.predictions));
+                const data = response.data.predictions
+                for (let key in data) {
+                    // Generate random numbers between 15 and 85
+                    let top = Math.floor(Math.random() * (60 - 15 + 1)) + 15;
+            
+                    // Add the 'top' property to the original object
+                    data[key]['top'] = top;
+                }
+                for (let key in data) {
+                    // Generate random numbers between 15 and 85
+                    let left = Math.floor(Math.random() * (40 - 15 + 1)) + 55;
+            
+                    // Add the 'top' property to the original object
+                    data[key]['left'] = left;
+                }
+                window.sessionStorage.setItem('network_data', JSON.stringify(data));
                 setTimeout(() => {
                     navigate('/dashboard');
                 }, 1000);

@@ -4,6 +4,7 @@ import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import Landing from './components/Landing/landing';
 import Upload from './components/dashboard/upload';
 import Dashboard from './components/dashboard/dashboard';
+import Record from './components/dashboard/record';
 import { GoogleOAuthProvider } from "@react-oauth/google"
 
 function App() {
@@ -14,6 +15,7 @@ function App() {
           <Routes>
             <Route path="/" element={<Landing />} />
             <Route path="/upload" element={<Upload />} />
+            <Route path="/record" element={<Record />} />
             <Route path="/dashboard" element={<Dashboard />} />
           </Routes>
         </Router>

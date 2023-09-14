@@ -152,7 +152,7 @@ def Predicted_Page():
             "protocol": data[0]['Protocols'][i],
             "port": data[0]['Ports'][i],
             "timestamps": data[0]['Timestamps'][i],
-            "predicted value": data[0]['Predictions'][i]
+            "predicted_value": data[0]['Predictions'][i]
         }
         formatted_data["predictions"].append(prediction)
 
