@@ -95,7 +95,7 @@ def pcap_to_csv(input_pcap, token):
     
     return out_file
 
-def run(token, duration):
+def run(token, duration=15):
     while True:
         output_file = capture_packets(token , duration)
         print("Captured packets for 5 seconds. Sleeping for 1 minute...")
