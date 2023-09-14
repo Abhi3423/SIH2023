@@ -33,9 +33,9 @@ const Dashboard = () => {
                         {data.map((item, index) => (
                             <div
                                 key={index}
-                                className={`w-4 h-4 rounded-full absolute top-[${item.top}%] left-[${item.left}%] transform -translate-x-1/2 -translate-y-1/2 ${item.predicted_value === 'BENIGN' ? 'bg-[#767676]' : 'bg-[#FF0000]'
+                                className={`w-4 h-4 rounded-full absolute top-[${item.top}%] left-[${item.left}%]  ${item.predicted_value === 'BENIGN' ? 'bg-[#767676]' : 'bg-[#FF0000]'
                                     }`}
-                            ></div>
+                            >{console.log(item.top)}</div>
                         ))}
 
                         {/* {Object.keys(data).map((key, index) => (

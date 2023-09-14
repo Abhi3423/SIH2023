@@ -7,7 +7,6 @@ import { getCookies, getCookie, setCookie, deleteCookie } from 'cookies-next';
 
 const Navbar = () => {
     const navigate = useNavigate()
-    console.log(getCookie('token'))
 
 
     const logOut = () => {

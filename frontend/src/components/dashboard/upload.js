@@ -42,7 +42,7 @@ const Upload = () => {
                 }
                 for (let key in data) {
                     // Generate random numbers between 15 and 85
-                    let left = Math.floor(Math.random() * (40 - 15 + 1)) + 55;
+                    let left = Math.floor(Math.random() * (60 - 15 + 1)) + 15;
             
                     // Add the 'top' property to the original object
                     data[key]['left'] = left;
